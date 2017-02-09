@@ -20,6 +20,7 @@ from django.contrib import admin
 admin.site.site_header = 'Saddles Admin'
 
 urlpatterns = [
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', admin.site.urls),
 
     url(r'^',  include('color_library.urls')),
