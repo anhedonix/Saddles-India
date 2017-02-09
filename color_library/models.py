@@ -1,23 +1,29 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Color(models.Model):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey('auth.User', editable=False)
     label = models.CharField(max_length=200)
-    #category = models.CharField(max_length=200, blank=True)
-    #sub_category = models.CharField(max_length=200, blank=True)
+    category = models.ForeignKey('Category', verbose_name="Category", on_delete=models.CASCADE)
 
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now, editable=False)
+    published_date = models.DateTimeField(blank=True, null=True, editable=False)
 
 
-    col_l = models.FloatField()
-    col_a = models.FloatField()
-    col_b = models.FloatField()
+    col_l = models.FloatField(verbose_name="L")
+    col_a = models.FloatField(verbose_name=" a")
+    col_b = models.FloatField(verbose_name=" b")
+    col_c = models.FloatField(verbose_name="C")
+    col_h = models.FloatField(verbose_name=" h")
 
     R = models.FloatField(editable=False)
     G = models.FloatField(editable=False)
     B = models.FloatField(editable=False)
+
+    H = models.FloatField(editable=False, blank=True, null=True)
+    S = models.FloatField(editable=False, blank=True, null=True)
+    V = models.FloatField(editable=False, blank=True, null=True)
 
     Hex = models.CharField(editable=False, max_length=6)
 
@@ -79,11 +85,27 @@ class Color(models.Model):
 
         self.Hex = '%02x%02x%02x' % (self.R*255, self.G*255, self.B*255)
 
+        self.published_date = timezone.now()
+
+        self.author = request.user
+
         super(Color, self).save(*args, **kwargs)
 
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
 
     def __str__(self):
         return self.label
+
+    def new(self):
+        return self.published_date >= timezone.now() - datetime.timedelta(days=3)
+
+class MainCategory(models.Model):
+    title = models.CharField(max_length=200, verbose_name="Main Category")
+    def __str__(self):
+        return self.title
+
+class Category(models.Model):
+    main_category = models.ForeignKey('MainCategory', verbose_name="Main Category", on_delete=models.CASCADE)
+    title = models.CharField(max_length=200, verbose_name="Category")
+
+    def __str__(self):
+        return self.title
