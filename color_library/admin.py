@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Color, MainCategory, Category
+from .models import Color, Category
 
 admin.site.register(Color)
-admin.site.register(MainCategory)
 admin.site.register(Category)

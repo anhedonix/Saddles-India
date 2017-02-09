@@ -48,11 +48,11 @@ class Color(models.Model):
         else:
             var_Z = ( var_Z - 16 / 116 ) / 7.787
 
-        ref_X =  95.047     #Observer= 2°, Illuminant= D65
+        ref_X =  95.047
         ref_Y = 100.000
         ref_Z = 108.883
 
-        var_X = (ref_X * var_X) / 100       #X from 0 to  95.047      (Observer = 2°, Illuminant = D65)
+        var_X = (ref_X * var_X) / 100       #X from 0 to  95.047
         var_Y = (ref_Y * var_Y) / 100       #Y from 0 to 100.000
         var_Z = (ref_Z * var_Z) / 100       #Z from 0 to 108.883
 
@@ -98,13 +98,7 @@ class Color(models.Model):
     def new(self):
         return self.published_date >= timezone.now() - datetime.timedelta(days=3)
 
-class MainCategory(models.Model):
-    title = models.CharField(max_length=200, verbose_name="Main Category")
-    def __str__(self):
-        return self.title
-
 class Category(models.Model):
-    main_category = models.ForeignKey('MainCategory', verbose_name="Main Category", on_delete=models.CASCADE)
     title = models.CharField(max_length=200, verbose_name="Category")
 
     def __str__(self):
