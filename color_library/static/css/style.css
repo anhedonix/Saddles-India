@@ -24,17 +24,25 @@
   display: block;
   border-radius:  0 40px 40px 0;
   margin-left: 0 !important;
+  /*border-right: 8px solid #ddd;*/
 }
 .swatch-nub {
   height: 80px;
+  width: 10px;
   display: block;
-  border-radius:  10px 0 0 10px ;
+  padding: 0;
+  border-radius:  50% 0 0 50% ;
 }
 
 .color-row .col {
   margin: 0;
 }
 .color-row {
-  /*margin-bottom: 8px;*/
-  min-height: 80px;
+  margin-bottom: 0px;
+  min-height: 60px;
+  /*border-bottom: 1px solid #ddd;*/
+}
+.color-row:hover {
+  background-color: #f0f0f0;
+  /*border-bottom: 1px solid #888;*/
 }
