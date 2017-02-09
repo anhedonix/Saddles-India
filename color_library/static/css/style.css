@@ -13,11 +13,28 @@
 	font-size: inherit;
 }
 
-body{
-  background-color: red;
-}
 .debug * {
   outline: 1px solid red;
   outline-color: red;
   outline-width: solid;
+}
+
+.swatch {
+  height: 80px;
+  display: block;
+  border-radius:  0 40px 40px 0;
+  margin-left: 0 !important;
+}
+.swatch-nub {
+  height: 80px;
+  display: block;
+  border-radius:  10px 0 0 10px ;
+}
+
+.color-row .col {
+  margin: 0;
+}
+.color-row {
+  /*margin-bottom: 8px;*/
+  min-height: 80px;
 }
