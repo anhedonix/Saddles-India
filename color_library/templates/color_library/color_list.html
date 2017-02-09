@@ -11,7 +11,7 @@
   <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static 'css/style.css' %}"               type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body class="grey darken-4">
+<body class="black">
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br>
@@ -22,48 +22,36 @@
   </div>
 
 
-  <div class="container debug">
-    <div class="section">
+  <div class="container">
+    <div class="section white-text">
 
-      <div class="row">
-        {% for color in colors %}
-                  <div class="col s12">
-                    <div class="card"  style="background-color:#{{ color.Hex }}">
-                        {# <a class="btn-floating halfway-fab waves-effect waves-light btn-large  blue-grey"><i class="material-icons">content_copy</i></a>#}
-                      <div class="card-content row">
-
-                        <div class="col m3" >{{ color.label }}</div>
-                        <div class="row">
-                          <div class="col m3">
-                            <div class="row">
-                              <p class="col s12 m3">Lab:</p>
-                              <p class="col s12 m3">{{ color.col_l|floatformat:4 }}</p>
-                              <p class="col s12 m3">{{ color.col_a|floatformat:4 }}</p>
-                              <p class="col s12 m3">{{ color.col_a|floatformat:4 }}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col m3">
-                             <div class="row">
-                               <p class="col s12">RGB</p>
-                               <p class="col s12 m4">{{ color.R|floatformat:4 }}</p>
-                               <p class="col s12 m4">{{ color.G|floatformat:4 }}</p>
-                               <p class="col s12 m4">{{ color.G|floatformat:4 }}</p>
-                             </div>
-                           </div>
-                         </div>
-
-                         <div class="row">
-                           <p class="col s12 m4">Hex={{ color.Hex|upper }}</p>
-                         </div>
-                      </div>
-                    </div>
-
-
-            </div>
-        {% endfor %}
+      <div class="row grey darken-3 valign-wrapper color-row center-align">
+        <div class="col m2 swatch left" style="background-color: #555"></div>
+        <h4 class="col m3 left-align" >Label</h4>
+        <p class="col s12 m2">Lab</p>
+        <p class="col s12 m2">RGB</p>
+        <p class="col s12 m2">#</p>
+        <div class="col swatch-nub right" style="background-color: #555"></div>
       </div>
+
+        {% for color in colors %}
+          <div class="row grey darken-4 valign-wrapper  hoverable color-row center-align">
+            <div class="col m2 swatch left" style="background-color: #{{ color.Hex|upper }}"></div>
+            <h4 class="col m3 left-align" >{{ color.label }}</h4>
+            <p class="col s12 m2">
+              {{ color.col_l|floatformat:4 }}<br>
+              {{ color.col_a|floatformat:4 }}<br>
+              {{ color.col_a|floatformat:4 }}
+            </p>
+            <p class="col s12 m2">
+              {{ color.R|floatformat:4 }}<br>
+              {{ color.G|floatformat:4 }}<br>
+              {{ color.G|floatformat:4 }}
+            </p>
+            <p class="col s12 m2">{{ color.Hex|upper }}</p>
+            <div class="col swatch-nub right" style="background-color: #{{ color.Hex|upper }}"></div>
+          </div>
+        {% endfor %}
 
 
 
