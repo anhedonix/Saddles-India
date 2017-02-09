@@ -11,11 +11,11 @@
   <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static 'css/style.css' %}"               type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body class="black">
+<body class="grey lighten-5">
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br>
-      <h1 class="header center orange-text">Saddles Color Library</h1>
+      <h1 class="header center">Saddles Color Library</h1>
       <br>
 
     </div>
@@ -23,39 +23,39 @@
 
 
   <div class="container">
-    <div class="section white-text">
+    <div class="section">
 
-      <div class="row grey darken-3 valign-wrapper color-row center-align">
-        <div class="col m2 swatch left" style="background-color: #555"></div>
-        <h4 class="col m3 left-align" >Label</h4>
-        <p class="col s12 m2">Lab</p>
-        <p class="col s12 m2">RGB</p>
-        <p class="col s12 m2">#</p>
-        <div class="col swatch-nub right" style="background-color: #555"></div>
+      <div class="row transparent valign-wrapper color-row ">
+        {# <div class="col m2 left transparent" style="margin-left: 0;" ></div>#}
+        {# <h5 class="col m3 left-align" >Label</h5>#}
+        {# <p class="col s12 m2">LabCh</p>#}
+        {# <p class="col s12 m2">RGB</p>#}
+        {# <p class="col s12 m2">#</p>#}
+        {# <div class="col right" ></div>#}
       </div>
 
         {% for color in colors %}
-          <div class="row grey darken-4 valign-wrapper  hoverable color-row center-align">
-            <div class="col m2 swatch left" style="background-color: #{{ color.Hex|upper }}"></div>
-            <h4 class="col m3 left-align" >{{ color.label }}</h4>
-            <p class="col s12 m2">
-              {{ color.col_l|floatformat:4 }}<br>
-              {{ color.col_a|floatformat:4 }}<br>
-              {{ color.col_b|floatformat:4 }}
-            </p>
-            <p class="col s12 m2">
-              {{ color.R|floatformat:4 }}<br>
-              {{ color.G|floatformat:4 }}<br>
-              {{ color.B|floatformat:4 }}
-            </p>
-            <p class="col s12 m2">{{ color.Hex|upper }}</p>
+          <div class="row valign-wrapper color-row hoverable">
+            <div class="col m3 swatch left" style="background-color: #{{ color.Hex|upper }}"></div>
+            <h4 class="col" >{{ color.label }}</h4>
+            {# <div class="col s12 m2">#}
+              {# {{ color.col_l|floatformat:2 }}<br>#}
+              {# {{ color.col_a|floatformat:2 }}<br>#}
+              {# {{ color.col_b|floatformat:2 }}<br>#}
+              {# {{ color.col_c|floatformat:2 }}<br>#}
+              {# {{ color.col_h|floatformat:2 }}#}
+            {# </div>#}
+            <div class="col s12 m4" style="font-weight: bold;">
+              <a href="#" class="row valign-wrapper center-align" style="margin-bottom: 0;">
+                <span class="col m4">{{ color.R|floatformat:6 }}</span>
+                <span class="col m4">{{ color.G|floatformat:6 }}</span>
+                <span class="col m4">{{ color.B|floatformat:6 }}</span>
+              </a>
+            </div>
+            {# <div class="col s12 m2">{{ color.Hex|upper }}</div>#}
             <div class="col swatch-nub right" style="background-color: #{{ color.Hex|upper }}"></div>
           </div>
         {% endfor %}
-
-
-
-
     </div>
   </div>
 
