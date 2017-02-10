@@ -46,3 +46,21 @@
   background-color: #f0f0f0;
   /*border-bottom: 1px solid #888;*/
 }
+
+.details {
+  /*background-color: red;*/
+  border-bottom: 1px solid #aaa;
+  /*margin-top: 10px;*/
+}
+.details .label {
+  /*background-color: red;*/
+  font-weight: bold;
+  color: #888;
+}
+
+.row.no-margin {
+  margin-bottom: 0;
+}
+.details .detail {
+  min-height: 60px;
+}
