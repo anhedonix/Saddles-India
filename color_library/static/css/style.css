@@ -14,8 +14,8 @@
 }
 
 .debug * {
-  outline: 1px solid red;
-  outline-color: red;
+  outline: 1px solid rgba(0,0,0,0.1);
+  outline-color: rgba(0,0,0,0.1);
   outline-width: solid;
 }
 
@@ -35,21 +35,26 @@
 }
 
 .color-row .col {
-  margin: 0;
+  /*margin: 0;*/
 }
 .color-row {
   margin-bottom: 0px;
-  min-height: 60px;
+  margin-left: -1rem !important;
+  margin-right: -1rem !important;
+  /*min-height: 60px;*/
   /*border-bottom: 1px solid #ddd;*/
 }
 .color-row:hover {
-  background-color: #f0f0f0;
+  /*background-color: #f0f0f0;*/
   /*border-bottom: 1px solid #888;*/
 }
 
 .details {
-  /*background-color: red;*/
-  border-bottom: 1px solid #aaa;
+  background-color: #eee;
+  /*padding-top: 1em !important;*/
+  /*padding-bottom: 1em !important;*/
+  /*margin-bottom: 0 !important;*/
+  /*border-bottom: 1px solid #aaa;*/
   /*margin-top: 10px;*/
 }
 .details .label {
