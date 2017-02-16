@@ -11,7 +11,7 @@
   <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static 'css/style.css' %}"               type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body class="grey lighten-5">
+<body class="grey lighten-2">
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br>
@@ -24,92 +24,93 @@
 
   <div class="container">
     <div class="section">
-
+      <ul class="collapsible popout" data-collapsible="expandable">
         {% for color in colors %}
-
-        <div class="row hoverable">
-            <div class="col s12 row valign-wrapper color-row">
-              <div class="col s4 m3 l2 swatch" style="background-color: #{{ color.Hex|upper }}"></div>
-              <h4 class="col" >{{ color.label }}</h4>
-              <div class="col s12 m4" style="font-weight: bold;">
-                <div href="#" class="center-align" style="margin-bottom: 0;">
-                  <span>{{ color.R|floatformat:6 }}</span><br>
-                  <span>{{ color.G|floatformat:6 }}</span><br>
-                  <span>{{ color.B|floatformat:6 }}</span>
+        <li class="">
+            <div class="collapsible-header">
+              <div class="row color-row valign-wrapper">
+                <div class="col s1 m2 l2 swatch valign" style="background-color: #{{ color.Hex|upper }}"></div>
+                <h4 class="col s3 m4 l4 valign flow-text" >{{ color.label }}</h4><br class="hide-on-med-and-up">
+                <div class="col s8 m6  l6 valign" style="font-weight: bold;">
+                  <span>R:&nbsp;{{ color.R|floatformat:6 }}</span>&nbsp;&nbsp;&nbsp;
+                  <span>G:&nbsp;{{ color.G|floatformat:6 }}</span>&nbsp;&nbsp;&nbsp;
+                  <span>B:&nbsp;{{ color.B|floatformat:6 }}</span>
                 </div>
+                <div class="col swatch-nub right hide-on-small-only valign" style="background-color: #{{ color.Hex|upper }}"></div>
               </div>
-              <div class="col swatch-nub right" style="background-color: #{{ color.Hex|upper }}"></div>
             </div>
 
-            <div class="col s12 details row">
-              <div class="col s12 m6 l3  detail valign-wrapper">
-                {{ color.description }}
-              </div>
-              <div class="col s12 m6 l3 detail">
-                {# <span class="label">&nbsp;</span><br>#}
-                <div class="row no-margin ">
-                  <div class="col s12">
-                    {# <span class="label">&nbsp;</span><br>#}
-                    <span class="label">L&nbsp;&nbsp;&nbsp;</span>{{ color.col_l|floatformat:2 }}<br>
-                  </div>
-                  <div class="col s6">
-                    <span class="label">a&nbsp;&nbsp;&nbsp;</span>{{ color.col_a|floatformat:2 }}<br>
-                    <span class="label">b&nbsp;&nbsp;&nbsp;</span>{{ color.col_b|floatformat:2 }}<br>
-                  </div>
-                  <div class="col s6">
-                    <span class="label">C&nbsp;&nbsp;&nbsp;</span>{{ color.col_c|floatformat:2 }}<br>
-                    <span class="label">h&nbsp;&nbsp;&nbsp;</span>{{ color.col_h|floatformat:2 }}
+            <div class="collapsible-body details">
+              <div class="row no-margin">
+                <div class="col s12 m6 l3  valign-wrapper">
+                  {{ color.description }}
+                </div>
+                <div class="col s12 m6 l3 detail">
+                  {# <span class="label">&nbsp;</span><br>#}
+                  <div class="row ">
+                    <div class="col s12">
+                      {# <span class="label">&nbsp;</span><br>#}
+                      <span class="label">L&nbsp;&nbsp;&nbsp;</span>{{ color.col_l|floatformat:2 }}<br>
+                    </div>
+                    <div class="col s6">
+                      <span class="label">a&nbsp;&nbsp;&nbsp;</span>{{ color.col_a|floatformat:2 }}<br>
+                      <span class="label">b&nbsp;&nbsp;&nbsp;</span>{{ color.col_b|floatformat:2 }}<br>
+                    </div>
+                    <div class="col s6">
+                      <span class="label">C&nbsp;&nbsp;&nbsp;</span>{{ color.col_c|floatformat:2 }}<br>
+                      <span class="label">h&nbsp;&nbsp;&nbsp;</span>{{ color.col_h|floatformat:2 }}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col s6 m6 l2 detail">
-                <div class="row no-margin">
-                  <div class="col s6 center-align">
-                    <span class="label">Lab</span><br>
-                    <span class="label">to</span><br>
-                    <span class="label">RGB</span>
-                  </div>
-                  <div class="col s6">
-                    {{ color.R1|floatformat:6 }}<br>
-                    {{ color.G1|floatformat:6 }}<br>
-                    {{ color.B1|floatformat:6 }}
+                <div class="col s6 m6 l2 detail">
+                  <div class="row">
+                    <div class="col s6 center-align">
+                      <span class="label">Lab</span><br>
+                      <span class="label">to</span><br>
+                      <span class="label">RGB</span>
+                    </div>
+                    <div class="col s6">
+                      {{ color.R1|floatformat:6 }}<br>
+                      {{ color.G1|floatformat:6 }}<br>
+                      {{ color.B1|floatformat:6 }}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col s6 m3 l2 detail">
-                <div class="row no-margin">
-                  <div class="col s6 center-align">
-                    <span class="label">LCh</span><br>
-                    <span class="label">to</span><br>
-                    <span class="label">RGB</span>
-                  </div>
-                  <div class="col s6">
-                    {{ color.R2|floatformat:6 }}<br>
-                    {{ color.G2|floatformat:6 }}<br>
-                    {{ color.B2|floatformat:6 }}
+                <div class="col s6 m3 l2 detail">
+                  <div class="row">
+                    <div class="col s6 center-align">
+                      <span class="label">LCh</span><br>
+                      <span class="label">to</span><br>
+                      <span class="label">RGB</span>
+                    </div>
+                    <div class="col s6">
+                      {{ color.R2|floatformat:6 }}<br>
+                      {{ color.G2|floatformat:6 }}<br>
+                      {{ color.B2|floatformat:6 }}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col s12 m3 l2 detail">
-                <span class="label">&nbsp;</span><br>
-                <div class="row no-margin">
-                  <div class="col s6 right-align">
-                    <span class="label">Hex</span><br>
-                  </div>
-                  <div class="col s6">
-                    {{ color.Hex|upper }}
+                <div class="col s12 m3 l2 detail">
+                  <span class="label">&nbsp;</span><br>
+                  <div class="row">
+                    <div class="col s6 right-align">
+                      <span class="label">Hex</span><br>
+                    </div>
+                    <div class="col s6">
+                      {{ color.Hex|upper }}
+                    </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
 
-        </div>
-
+            </li>
         {% endfor %}
+        </ul>
     </div>
   </div>
 
@@ -117,8 +118,10 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  {# <script src="js/materialize.js"></script>#}
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+  {# <script src="js/init.js"></script>#}
 
   </body>
 </html>
